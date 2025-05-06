@@ -68,7 +68,12 @@ export default {
 					'light-blue': '#3D89F5',
 					'gold': '#FFD700',
 					'gray': '#F5F5F5',
-					'dark': '#333333'
+					'dark': '#333333',
+					'maroon': '#800020',
+					'light-maroon': '#A52A2A',
+					'dark-maroon': '#5C0015',
+					'cream': '#FFF8E1',
+					'beige': '#F5F5DC'
 				}
 			},
 			borderRadius: {
@@ -101,6 +106,10 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				serif: ['Georgia', 'serif']
+			},
+			boxShadow: {
+				'elegant': '0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 11px -5px rgba(0, 0, 0, 0.08)',
+				'luxury': '0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07)',
 			}
 		}
 	},

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,22 +24,95 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Infrastructure", path: "/infrastructure" },
-    { name: "Academics", path: "/academics" },
-    { name: "Student Life", path: "/student-life" },
-    { name: "Photo Gallery", path: "/gallery" },
-    { name: "Notable Visits", path: "/notable-visits" },
-    { name: "Hall of Fame", path: "/hall-of-fame" },
-    { name: "Alumni", path: "/alumni" },
-    { name: "Contact Us", path: "/contact" },
+    { 
+      name: "Home", 
+      path: "/",
+      dropdown: [] 
+    },
+    { 
+      name: "About", 
+      path: "/about",
+      dropdown: [
+        { name: "School History", path: "/about#history" },
+        { name: "Our Vision & Mission", path: "/about#vision" },
+        { name: "Principal's Message", path: "/about#message" },
+        { name: "Management", path: "/about#management" },
+      ] 
+    },
+    { 
+      name: "Infrastructure", 
+      path: "/infrastructure",
+      dropdown: [
+        { name: "Campus Tour", path: "/infrastructure#campus" },
+        { name: "Classrooms", path: "/infrastructure#classrooms" },
+        { name: "Laboratories", path: "/infrastructure#laboratories" },
+        { name: "Library", path: "/infrastructure#library" },
+        { name: "Sports Facilities", path: "/infrastructure#sports" },
+      ]
+    },
+    { 
+      name: "Academics", 
+      path: "/academics",
+      dropdown: [
+        { name: "Curriculum", path: "/academics#curriculum" },
+        { name: "Faculty", path: "/academics#faculty" },
+        { name: "Examination System", path: "/academics#examination" },
+        { name: "Academic Calendar", path: "/academics#calendar" },
+      ]
+    },
+    { 
+      name: "Student Life", 
+      path: "/student-life",
+      dropdown: [
+        { name: "Co-Curricular Activities", path: "/student-life#activities" },
+        { name: "Clubs & Societies", path: "/student-life#clubs" },
+        { name: "Student Council", path: "/student-life#council" },
+        { name: "School Events", path: "/student-life#events" },
+      ]
+    },
+    { 
+      name: "Photo Gallery", 
+      path: "/gallery",
+      dropdown: [
+        { name: "Events Gallery", path: "/gallery#events" },
+        { name: "Sports Gallery", path: "/gallery#sports" },
+        { name: "Campus Gallery", path: "/gallery#campus" },
+      ]
+    },
+    { 
+      name: "Notable Visits", 
+      path: "/notable-visits",
+      dropdown: []
+    },
+    { 
+      name: "Hall of Fame", 
+      path: "/hall-of-fame",
+      dropdown: [
+        { name: "Academic Achievers", path: "/hall-of-fame#academic" },
+        { name: "Sports Achievers", path: "/hall-of-fame#sports" },
+        { name: "Cultural Achievers", path: "/hall-of-fame#cultural" },
+      ]
+    },
+    { 
+      name: "Alumni", 
+      path: "/alumni",
+      dropdown: [
+        { name: "Alumni Network", path: "/alumni#network" },
+        { name: "Distinguished Alumni", path: "/alumni#distinguished" },
+        { name: "Alumni Events", path: "/alumni#events" },
+      ]
+    },
+    { 
+      name: "Contact Us", 
+      path: "/contact",
+      dropdown: []
+    },
   ];
 
   return (
     <header className="relative w-full">
       {/* Top Bar with contact info */}
-      <div className="bg-school-blue text-white py-2 hidden md:block">
+      <div className="bg-school-maroon text-white py-2 hidden md:block">
         <div className="container-custom flex justify-between items-center">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -52,7 +125,7 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            <Button variant="link" className="text-white p-0 h-auto text-sm">
+            <Button variant="link" className="text-white p-0 h-auto text-sm hover:text-school-cream">
               Student Login
             </Button>
           </div>
@@ -63,7 +136,7 @@ const Navbar = () => {
       <div
         className={`w-full py-4 transition-all duration-300 ${
           isScrolled
-            ? "bg-white shadow-md sticky top-0 z-50"
+            ? "bg-white shadow-luxury sticky top-0 z-50"
             : "bg-white md:bg-transparent"
         }`}
       >
@@ -71,11 +144,11 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <NavLink to="/" className="flex items-center">
-              <div className="w-12 h-12 mr-3 rounded-full bg-school-blue flex items-center justify-center text-white font-bold text-xl">
+              <div className="w-12 h-12 mr-3 rounded-full bg-school-maroon flex items-center justify-center text-white font-bold text-xl">
                 GGN
               </div>
               <div>
-                <h1 className="text-lg md:text-xl font-bold text-school-blue">
+                <h1 className="text-lg md:text-xl font-bold text-school-maroon font-serif">
                   GGN Public School
                 </h1>
                 <p className="text-xs md:text-sm text-gray-600">
@@ -87,39 +160,41 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
               {navLinks.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    isActive ? "nav-link nav-link-active" : "nav-link"
-                  }
-                >
-                  {link.name}
-                </NavLink>
+                <div key={link.path} className="relative group">
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      isActive ? "nav-link nav-link-active" : "nav-link"
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                  
+                  {link.dropdown.length > 0 && (
+                    <div className="dropdown-menu">
+                      {link.dropdown.map((subLink, index) => (
+                        <a 
+                          key={index} 
+                          href={subLink.path} 
+                          className="dropdown-link"
+                        >
+                          {subLink.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-school-blue"
+              className="lg:hidden text-school-maroon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <X size={24} />
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -150,36 +225,61 @@ const Navbar = () => {
         } transition-all duration-300 ease-in-out pt-16`}
       >
         <div className="container px-4 py-6 flex flex-col h-full">
+          {/* Close Button */}
+          <button
+            className="absolute top-4 right-4 text-school-maroon"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+          
           {/* Mobile Contact Info */}
           <div className="flex flex-col gap-4 mb-6 text-sm">
             <div className="flex items-center gap-2">
-              <Phone size={14} className="text-school-blue" />
+              <Phone size={14} className="text-school-maroon" />
               <span>+91 1234567890</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mail size={14} className="text-school-blue" />
+              <Mail size={14} className="text-school-maroon" />
               <span>info@ggnpublicschool.in</span>
             </div>
-            <Button variant="outline" className="w-full mt-2 text-sm">
+            <Button variant="outline" className="w-full mt-2 text-sm border-school-maroon text-school-maroon hover:bg-school-maroon hover:text-white">
               Student Login
             </Button>
           </div>
 
           {/* Mobile Nav Links */}
-          <nav className="flex flex-col space-y-4">
+          <nav className="flex flex-col space-y-1 overflow-y-auto">
             {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-school-blue font-medium border-l-4 border-school-blue pl-4 py-2"
-                    : "text-gray-700 border-l-4 border-transparent pl-4 py-2"
-                }
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </NavLink>
+              <div key={link.path} className="border-b border-gray-100 last:border-b-0">
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-school-maroon font-medium border-l-4 border-school-maroon pl-4 py-3 block"
+                      : "text-gray-700 border-l-4 border-transparent pl-4 py-3 block"
+                  }
+                  onClick={() => link.dropdown.length === 0 && setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </NavLink>
+                
+                {link.dropdown.length > 0 && (
+                  <div className="pl-8 py-2 space-y-1 bg-gray-50">
+                    {link.dropdown.map((subLink, index) => (
+                      <a 
+                        key={index} 
+                        href={subLink.path} 
+                        className="block py-2 px-4 text-sm text-gray-700 hover:text-school-maroon"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        - {subLink.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
         </div>
