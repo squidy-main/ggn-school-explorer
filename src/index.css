@@ -87,6 +87,10 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html {
+    @apply scroll-smooth;
+  }
 }
 
 @layer components {
@@ -112,12 +116,12 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-school-dark mb-6 relative inline-block;
+    @apply text-3xl md:text-4xl font-bold text-school-maroon mb-6 relative inline-block;
   }
   
   .section-title::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-school-maroon;
+    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-school-gold;
   }
 
   .luxury-card {

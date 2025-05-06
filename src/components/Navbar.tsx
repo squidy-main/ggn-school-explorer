@@ -1,12 +1,18 @@
 
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Effect to scroll to top when route changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -144,10 +150,12 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <NavLink to="/" className="flex items-center">
-              <div className="w-12 h-12 mr-3 rounded-full bg-school-maroon flex items-center justify-center text-white font-bold text-xl">
-                GGN
-              </div>
-              <div>
+              <img 
+                src="https://www.ggnpublicschool.in/assets/img/logo.png" 
+                alt="GGN Public School Logo" 
+                className="h-16 mr-3"
+              />
+              <div className="hidden md:block">
                 <h1 className="text-lg md:text-xl font-bold text-school-maroon font-serif">
                   GGN Public School
                 </h1>

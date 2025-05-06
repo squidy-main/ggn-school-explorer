@@ -50,7 +50,7 @@ const Index = () => {
                       Founded with the vision to nurture young minds and develop them into responsible citizens, our school offers a comprehensive curriculum that balances academics with extra-curricular activities.
                     </p>
                     <Link to="/about">
-                      <Button className="bg-school-blue hover:bg-school-light-blue">Learn More About Us</Button>
+                      <Button className="bg-school-maroon hover:bg-school-light-maroon">Learn More About Us</Button>
                     </Link>
                   </div>
                   <div className="md:w-1/2">
@@ -79,7 +79,7 @@ const Index = () => {
                 ))}
               </div>
               <div className="mt-6 text-center">
-                <Button variant="outline" className="border-school-blue text-school-blue hover:bg-school-blue hover:text-white">
+                <Button variant="outline" className="border-school-maroon text-school-maroon hover:bg-school-maroon hover:text-white">
                   View All Updates
                 </Button>
               </div>
@@ -91,7 +91,7 @@ const Index = () => {
       <FeaturesSection />
 
       {/* Admissions Section */}
-      <section className="py-16 bg-school-gray">
+      <section className="py-16 bg-school-cream">
         <div className="container-custom">
           <div className="text-center mb-10">
             <h2 className="section-title mx-auto after:left-1/4 after:right-1/4">Admissions</h2>
@@ -117,7 +117,7 @@ const Index = () => {
                   <li>Selected candidates must complete the admission process by paying the required fees within the specified timeframe.</li>
                 </ol>
                 <div className="mt-6">
-                  <Button className="bg-school-blue hover:bg-school-light-blue">Download Application Form</Button>
+                  <Button className="bg-school-maroon hover:bg-school-light-maroon">Download Application Form</Button>
                 </div>
               </TabsContent>
               <TabsContent value="requirements" className="p-6 bg-white rounded-b-lg shadow-md">
@@ -161,7 +161,7 @@ const Index = () => {
                   </Card>
                 </div>
                 <div className="mt-6">
-                  <Button className="bg-school-blue hover:bg-school-light-blue">Contact For Details</Button>
+                  <Button className="bg-school-maroon hover:bg-school-light-maroon">Contact For Details</Button>
                 </div>
               </TabsContent>
             </Tabs>
@@ -248,25 +248,25 @@ const Index = () => {
           
           <div className="mt-8 text-center">
             <Link to="/gallery">
-              <Button className="bg-school-blue hover:bg-school-light-blue">View Full Gallery</Button>
+              <Button className="bg-school-maroon hover:bg-school-light-maroon">View Full Gallery</Button>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-school-blue text-white">
+      <section className="py-16 bg-school-maroon text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our School Community?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Take the first step towards providing your child with quality education and a nurturing environment.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-white text-school-blue hover:bg-opacity-90">
+            <Button size="lg" className="bg-white text-school-maroon hover:bg-opacity-90">
               Apply for Admission
             </Button>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-school-blue">
+              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-school-maroon">
                 Contact Us
               </Button>
             </Link>

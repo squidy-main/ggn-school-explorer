@@ -3,7 +3,7 @@ const Academics = () => {
   return (
     <main>
       {/* Page Header */}
-      <section className="bg-school-blue py-16 relative">
+      <section className="bg-school-maroon py-16 relative">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center opacity-20"></div>
         <div className="container-custom relative z-10 text-white">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Academics</h1>
