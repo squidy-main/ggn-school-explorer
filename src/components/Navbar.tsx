@@ -138,6 +138,25 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Logo Section - Centered above navigation */}
+      <div className="bg-white py-4 flex justify-center">
+        <NavLink to="/" className="flex flex-col items-center">
+          <img 
+            src="https://www.ggnpublicschool.in/assets/img/logo.png" 
+            alt="GGN Public School Logo" 
+            className="h-16 mb-2"
+          />
+          <div className="text-center">
+            <h1 className="text-lg md:text-xl font-bold text-school-maroon font-serif">
+              GGN Public School
+            </h1>
+            <p className="text-xs md:text-sm text-gray-600">
+              Excellence in Education
+            </p>
+          </div>
+        </NavLink>
+      </div>
+
       {/* Main Navigation */}
       <div
         className={`w-full py-4 transition-all duration-300 ${
@@ -148,53 +167,6 @@ const Navbar = () => {
       >
         <div className="container-custom">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <NavLink to="/" className="flex items-center">
-              <img 
-                src="https://www.ggnpublicschool.in/assets/img/logo.png" 
-                alt="GGN Public School Logo" 
-                className="h-16 mr-3"
-              />
-              <div className="hidden md:block">
-                <h1 className="text-lg md:text-xl font-bold text-school-maroon font-serif">
-                  GGN Public School
-                </h1>
-                <p className="text-xs md:text-sm text-gray-600">
-                  Excellence in Education
-                </p>
-              </div>
-            </NavLink>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
-              {navLinks.map((link) => (
-                <div key={link.path} className="relative group">
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                      isActive ? "nav-link nav-link-active" : "nav-link"
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                  
-                  {link.dropdown.length > 0 && (
-                    <div className="dropdown-menu">
-                      {link.dropdown.map((subLink, index) => (
-                        <a 
-                          key={index} 
-                          href={subLink.path} 
-                          className="dropdown-link"
-                        >
-                          {subLink.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
-
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden text-school-maroon"
@@ -220,6 +192,41 @@ const Navbar = () => {
                 </svg>
               )}
             </button>
+
+            {/* Desktop Navigation - Centered */}
+            <nav className="hidden lg:flex items-center justify-center w-full">
+              <div className="flex items-center space-x-6">
+                {navLinks.map((link) => (
+                  <div key={link.path} className="relative group">
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        isActive ? "nav-link nav-link-active" : "nav-link"
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                    
+                    {link.dropdown.length > 0 && (
+                      <div className="dropdown-menu">
+                        {link.dropdown.map((subLink, index) => (
+                          <a 
+                            key={index} 
+                            href={subLink.path} 
+                            className="dropdown-link"
+                          >
+                            {subLink.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </nav>
+
+            {/* Empty div to balance the layout on desktop */}
+            <div className="hidden lg:block"></div>
           </div>
         </div>
       </div>
